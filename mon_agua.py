@@ -1,33 +1,33 @@
 class Consumo:
     def __init__(self):
-        self.historico = []
-        self.media = 0.0
-        self.alerta = ""
+        self.__historico = []
+        self.__media = 0.0
+        self.__alerta = ""
 
     def registrar_consumo(self, valor):
         if valor < 0:
             return "Erro: Consumo inválido."
         
-        self.historico.append(valor)
+        self.__historico.append(valor)
         self.calcular_media()
         self.gerar_alerta(valor)
         return {
-            "Histórico": self.historico,
-            "Média": self.media,
-            "Alerta": self.alerta
+            "Histórico": self.__historico,
+            "Média": self.__media,
+            "Alerta": self.__alerta
         }
 
     def calcular_media(self):
-        if self.historico:
-            self.media = sum(self.historico) / len(self.historico)
+        if self.__historico:
+            self.__media = sum(self.__historico) / len(self.__historico)
 
     def gerar_alerta(self, valor):
-        if valor < self.media:
-            self.alerta = "Consumo abaixo da média."
-        elif valor > self.media:
-            self.alerta = "Consumo acima da média!"
+        if valor < self.__media:
+            self.__alerta = "Consumo abaixo da média."
+        elif valor > self.__media:
+            self.__alerta = "Consumo acima da média!"
         else:
-            self.alerta = "Consumo dentro da média."
+            self.__alerta = "Consumo dentro da média."
 
 # Testando o sistema
 monitoramento = Consumo()
